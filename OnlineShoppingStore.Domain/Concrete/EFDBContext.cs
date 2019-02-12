@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using OnlineShoppingStore.Domain.Entities;
-
+//Commit1
 namespace OnlineShoppingStore.Domain.Concrete
 {
    public class EFDbContext : DbContext
@@ -13,3 +13,4 @@ namespace OnlineShoppingStore.Domain.Concrete
         public DbSet<Product> Products { get; set; }
     }
 }
+
