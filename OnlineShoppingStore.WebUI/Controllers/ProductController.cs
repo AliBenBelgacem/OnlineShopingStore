@@ -18,13 +18,21 @@ namespace OnlineShoppingStore.WebUI.Controllers
             _repository = repo;
         }
         // GET: Product
-        public ActionResult List(int page = 1)
+        public ActionResult List(string category, int page = 1)
         {
             ProductsListViewModel plVM = new ProductsListViewModel()
             {
-                Products = _repository.Products.OrderBy(p => p.ProductId).Skip(page-1* pagesize).Take(pagesize),
-                PagingInfo = new PagingInfo() { CurrentPage = page, ItemsPerPage = 3, TotalItems = _repository.Products.Count() }
+                Products = _repository.Products.Where(w => string.IsNullOrWhiteSpace(category) ? true : w.Category.Trim() == category.Trim())
+                                               .OrderBy(p => p.ProductId)
+                                               .Skip((page - 1) * pagesize)
+                                               .Take(pagesize),
+                PagingInfo = new PagingInfo() { CurrentPage = page, ItemsPerPage = pagesize, TotalItems = _repository.Products.Where(w => string.IsNullOrWhiteSpace(category) ? true : w.Category.Trim() == category.Trim()).Count() },
+
+                CurrentCategory = category
             };
+
+            ViewBag.SelectedCategory = category;
+
             return View(plVM);
         }
     }
