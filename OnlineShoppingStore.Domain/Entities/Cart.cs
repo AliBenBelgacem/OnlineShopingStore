@@ -16,7 +16,7 @@ namespace OnlineShoppingStore.Domain.Entities
             if (cart == null)
             {
                 //GetCart().
-                lineCollection.Add(new CartLine{ Product = product, Quantity=1});
+                lineCollection.Add(new CartLine{ Product = product, Quantity= quantity });
             }
             else
             {
