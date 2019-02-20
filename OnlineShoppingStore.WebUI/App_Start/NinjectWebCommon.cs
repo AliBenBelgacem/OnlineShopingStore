@@ -67,7 +67,9 @@ namespace OnlineShoppingStore.WebUI.App_Start
         {
             kernel.Bind<IProductRepository>().To<EFProductRepository>();
             kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>();
-            
+            kernel.Bind<IAuthentication>().To<FormsAuthenticationProvider>();
+
+
         }        
     }
 }

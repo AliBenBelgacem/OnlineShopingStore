@@ -17,6 +17,8 @@ namespace OnlineShoppingStore.Domain.Concrete
             get { return eFDbContext.Products; }
         }
 
+        public IEnumerable<User> Users => throw new System.NotImplementedException();
+
         public void SaveProduct(Product product)
         {
             if (product.ProductId == 0)
